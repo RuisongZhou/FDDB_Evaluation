@@ -17,7 +17,7 @@ python3 setup.py build_ext --inplace
 
 **Notice:** 
 The prediction directory should be like widerface dataset.
- I generate the fake prediction result under `sample_pred` for you reference.
+ I generate the fake prediction result under `pred_sample` for you reference.
 
 
 ````
