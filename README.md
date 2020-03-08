@@ -13,7 +13,7 @@ python3 setup.py build_ext --inplace
 
 ##### evaluating
 
-**GroungTruth:** under the `FDDB-folds`
+**GroungTruth:** under the `ground_truth`
 
 **Notice:** 
 The prediction directory should be like widerface dataset.
