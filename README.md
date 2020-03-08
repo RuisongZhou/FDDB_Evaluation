@@ -1,5 +1,5 @@
 # FDDB-Evaluation
-Python Evaluation Code for [FDDB Face Dataset](http://vis-www.cs.umass.edu/fddb/results.html)
+Python Evaluation Code for [FDDB Face Dataset](http://vis-www.cs.umass.edu/fddb/index.html)
 
 
 ## Usage
