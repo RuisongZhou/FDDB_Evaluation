@@ -210,16 +210,20 @@ def evaluation(pred, gt_path, iou_thresh=0.5):
     norm_score(pred)
     gt_box_dict = get_gt_boxes(gt_path)
     event = list(pred.keys())
+    event = [int(e) for e in event]
     event.sort()
     thresh_num = 1000
     aps = []
-    for setting_id in range(len(event)):
+
+    pbar = tqdm.tqdm(range(len(event)))
+    for setting_id in pbar:
+        pbar.set_description('Predicting ... ')
         # different setting
         count_face = 0
         pr_curve = np.zeros((thresh_num, 2)).astype('float')
 
-        gt = gt_box_dict[int(event[setting_id])]
-        pred_list = pred[event[setting_id]]
+        gt = gt_box_dict[event[setting_id]]
+        pred_list = pred[str(event[setting_id])]
         gt_list = list(gt.keys())
         for j in range(len(gt_list)):
             gt_boxes = gt[gt_list[j]].astype('float')  # from image name get gt boxes
