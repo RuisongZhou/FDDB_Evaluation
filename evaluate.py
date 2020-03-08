@@ -11,10 +11,14 @@ import argparse
 import numpy as np
 import cv2
 from bbox import bbox_overlaps
-
+import pickle
 
 def get_gt_boxes(gt_dir):
     """ gt dir: (wider_face_val.mat, wider_easy_val.mat, wider_medium_val.mat, wider_hard_val.mat)"""
+    cache_file = os.path.join(gt_dir, 'gt_box.cache')
+    if os.path.exists(cache_file):
+        with open(cache_file, 'rb') as f:
+            return pickle.load(f)
 
     gt_dict = {}
     for i in range(1, 11):
@@ -54,6 +58,10 @@ def get_gt_boxes(gt_dir):
 
             gt_sub_dict[filename] = face_loc
         gt_dict[i] = gt_sub_dict
+
+    with open(cache_file, 'wb') as f:
+        pickle.dump(gt_dict, f, pickle.HIGHEST_PROTOCOL)
+
     return gt_dict
 
 
