@@ -249,6 +249,7 @@ def evaluation(pred, gt_path, iou_thresh=0.5):
     print("==================== Results ====================")
     for i in range(len(aps)):
         print("FDDB-fold-{} Val AP: {}".format(event[i], aps[i]))
+    print("FDDB Dataset Average AP: {}".format(sum(aps)/len(aps)))
     print("=================================================")
 
 
