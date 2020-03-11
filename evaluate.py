@@ -231,6 +231,8 @@ def evaluation(pred, gt_path, iou_thresh=0.5):
             keep_index = np.array(range(1, len(gt_boxes) + 1))
             count_face += len(keep_index)
             ignore = np.zeros(gt_boxes.shape[0])
+            if len(gt_boxes) == 0 or len(pred_info) == 0:
+                continue
             if len(keep_index) != 0:
                 ignore[keep_index - 1] = 1
             pred_recall, proposal_list = image_eval(pred_info, gt_boxes, ignore, iou_thresh)
