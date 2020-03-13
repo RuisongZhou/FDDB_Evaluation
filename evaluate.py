@@ -47,7 +47,7 @@ def get_gt_boxes(gt_dir):
                 mask = np.zeros((1000, 1000), dtype=np.uint8)
                 cv2.ellipse(mask, ((int)(center_x), (int)(center_y)),
                             ((int)(major_axis_radius), (int)(minor_axis_radius)), angle, 0., 360., (255, 255, 255))
-                image, contours, hierarchy = cv2.findContours(mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
+                contours, hierarchy = cv2.findContours(mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)[-2:]
                 r = cv2.boundingRect(contours[0])
                 x_min = r[0]
                 y_min = r[1]
